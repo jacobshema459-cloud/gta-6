@@ -10,6 +10,37 @@
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Druk+Wide&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles-part1.css">
     <link rel="stylesheet" href="styles-part2.css">
+    <style>
+        /* Premium Background Enhancement */
+        html {
+            background: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 50%, #0a0a0f 100%);
+            background-attachment: fixed;
+        }
+
+        body {
+            background-image: url('gbackground.jpg');
+            background-attachment: fixed;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background: radial-gradient(ellipse at center, rgba(224, 17, 95, 0.05) 0%, transparent 60%),
+                        radial-gradient(circle at 20% 0%, rgba(255, 107, 53, 0.03) 0%, transparent 40%),
+                        linear-gradient(180deg, rgba(10, 10, 15, 0.3) 0%, rgba(10, 10, 15, 0.8) 100%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        section, nav, footer {
+            position: relative;
+            z-index: 1;
+        }
+    </style>
 </head>
 <body>
 
@@ -25,12 +56,11 @@
     </nav>
 
     <section class="hero" id="hero">
-        <div class="hero-bg"></div>
         <div class="hero-content">
             <div class="hero-badge reveal">LIMITED EVENT</div>
             
             <div class="hero-image-container reveal">
-                <img src="gcover.jpg" alt="Grand Theft Auto VI - Key Art" />
+                <img src="gcover.jpg" alt="Grand Theft Auto VI - Key Art" loading="lazy" />
             </div>
             
             <div class="hero-text-content reveal">
@@ -43,7 +73,7 @@
                 </div>
             </div>
         </div>
-        <div class="scroll-hint">Scroll to explore</div>
+        <div class="scroll-hint">↓ Scroll to explore</div>
     </section>
 
     <section id="experience">
@@ -61,26 +91,52 @@
                         Your browser does not support the video tag.
                     </video>
                     <div class="play-overlay">
-                        <div class="play-icon">▶</div>
+                        <svg class="play-icon" viewBox="0 0 24 24" width="80" height="80">
+                            <circle cx="12" cy="12" r="12" fill="url(#playGrad)"/>
+                            <polygon points="10,6 10,18 18,12" fill="white"/>
+                            <defs>
+                                <linearGradient id="playGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#ff006e;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#d62828;stop-opacity:1" />
+                                </linearGradient>
+                            </defs>
+                        </svg>
                     </div>
                 </div>
             </div>
 
             <div class="video-controls-premium reveal">
                 <div class="control-btn-wrapper">
-                    <button class="control-btn" onclick="document.getElementById('gtaVideo').play()" title="Play">▶</button>
+                    <button class="control-btn svg-btn" onclick="document.getElementById('gtaVideo').play()" title="Play">
+                        <svg viewBox="0 0 24 24" width="20" height="20">
+                            <polygon points="5,3 19,12 5,21" fill="currentColor"/>
+                        </svg>
+                    </button>
                     <span class="control-label">Play</span>
                 </div>
                 <div class="control-btn-wrapper">
-                    <button class="control-btn" onclick="document.getElementById('gtaVideo').pause()" title="Pause">⏸</button>
+                    <button class="control-btn svg-btn" onclick="document.getElementById('gtaVideo').pause()" title="Pause">
+                        <svg viewBox="0 0 24 24" width="20" height="20">
+                            <rect x="6" y="4" width="4" height="16" fill="currentColor"/>
+                            <rect x="14" y="4" width="4" height="16" fill="currentColor"/>
+                        </svg>
+                    </button>
                     <span class="control-label">Pause</span>
                 </div>
                 <div class="control-btn-wrapper">
-                    <button class="control-btn" onclick="document.getElementById('gtaVideo').currentTime = 0" title="Reset">⏮</button>
+                    <button class="control-btn svg-btn" onclick="document.getElementById('gtaVideo').currentTime = 0" title="Reset">
+                        <svg viewBox="0 0 24 24" width="20" height="20">
+                            <path d="M7 7v10a5 5 0 0 0 10 0V7M17 4L7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </button>
                     <span class="control-label">Reset</span>
                 </div>
                 <div class="control-btn-wrapper">
-                    <button class="control-btn" onclick="toggleFullscreen()" title="Fullscreen">⛶</button>
+                    <button class="control-btn svg-btn" onclick="toggleFullscreen()" title="Fullscreen">
+                        <svg viewBox="0 0 24 24" width="20" height="20">
+                            <path d="M8 3H5a2 2 0 0 0-2 2v3m16 0V5a2 2 0 0 0-2-2h-3m0 16h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </button>
                     <span class="control-label">Fullscreen</span>
                 </div>
             </div>
@@ -245,7 +301,7 @@
         <div class="story-grid">
             <div class="story-card reveal">
                 <div class="story-image">
-                    <img src="p1.jpg" alt="The Open Road">
+                    <img src="p1.jpg" alt="The Open Road" loading="lazy">
                     <div class="story-label">THE OPEN ROAD</div>
                 </div>
                 <div class="story-content">
@@ -256,7 +312,7 @@
             
             <div class="story-card reverse reveal">
                 <div class="story-image">
-                    <img src="p2.jpg" alt="No Easy Way Out">
+                    <img src="p2.jpg" alt="No Easy Way Out" loading="lazy">
                     <div class="story-label">NO EASY WAY OUT</div>
                 </div>
                 <div class="story-content">
@@ -267,7 +323,7 @@
             
             <div class="story-card reveal">
                 <div class="story-image">
-                    <img src="p3.jpg" alt="The Other Side">
+                    <img src="p3.jpg" alt="The Other Side" loading="lazy">
                     <div class="story-label">THE OTHER SIDE OF THE CITY</div>
                 </div>
                 <div class="story-content">
@@ -278,7 +334,7 @@
             
             <div class="story-card reverse reveal">
                 <div class="story-image">
-                    <img src="p4.jpg" alt="When Lines Are Drawn">
+                    <img src="p4.jpg" alt="When Lines Are Drawn" loading="lazy">
                     <div class="story-label">WHEN THE LINES ARE DRAWN</div>
                 </div>
                 <div class="story-content">
